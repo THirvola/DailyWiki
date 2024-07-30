@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyWiki", "DailyWiki.csproj", "{3628A3A7-689A-45B3-ADC1-3BA52A5B7BE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3628A3A7-689A-45B3-ADC1-3BA52A5B7BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3628A3A7-689A-45B3-ADC1-3BA52A5B7BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3628A3A7-689A-45B3-ADC1-3BA52A5B7BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3628A3A7-689A-45B3-ADC1-3BA52A5B7BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D9D0635-CA86-4A87-BDF4-05E3D93F5CEB}
+	EndGlobalSection
+EndGlobal
