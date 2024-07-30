@@ -1,7 +1,65 @@
-﻿@page "/"
+﻿@using System.Text.Json
+@page "/"
+@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Daily Wikipedia page guessing game</h1>
 
-Welcome to your new app.
+<h2>@title</h2>
+
+@code{
+    string title = "None";
+    string pageId = "0";
+
+    /// <summary>
+    /// Ran automatically on initialization. Used for initializing the page
+    /// </summary>
+    protected override async Task OnInitializedAsync()
+    {
+        await FetchRandomPage();
+    /*
+    try
+        {
+        var client = new HttpClient();
+        //GET
+        HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Pet_door&formatversion=2");
+        string respString = await resp.Content.ReadAsStringAsync();
+
+        //Parsing response
+        Stream responseStream = resp.Content.ReadAsStream();
+        JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
+        JsonElement parseResult = jsonRoot.GetProperty("parse");
+        title = parseResult.GetProperty("title").GetString()!;
+    }
+    catch
+        {
+        //todo: catch errors
+
+    }*/
+    }
+
+    private async Task FetchRandomPage()
+    {
+
+        try
+        {
+            var client = new HttpClient();
+            //GET
+            HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnlimit=1&rnfilterredir=nonredirects&rnnamespace=0");
+            string respString = await resp.Content.ReadAsStringAsync();
+
+            //Parsing response
+            Stream responseStream = resp.Content.ReadAsStream();
+            JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
+            System.Diagnostics.Debug.WriteLine(jsonRoot.GetProperty("query").GetProperty("random")[0].GetRawText());
+            JsonElement parseResult = jsonRoot.GetProperty("query").GetProperty("random")[0].GetProperty("title");
+            title = parseResult.GetString()!;
+        }
+        catch
+        {
+            //todo: catch errors
+
+        }
+    }
+}
