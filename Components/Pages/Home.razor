@@ -6,55 +6,37 @@
 
 <h1>Daily Wikipedia page guessing game</h1>
 
-<h2>@title</h2>
+<h2>Title: @title</h2>
+<h3>hint 1: @hint1</h3>
+<p>hint 2: @hint2</p>
 
 @code{
     string title = "None";
     string pageId = "0";
+    string hint1 = "None";
+    string hint2 = "None";
 
     /// <summary>
     /// Ran automatically on initialization. Used for initializing the page
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        await FetchRandomPage();
-    /*
-    try
-        {
-        var client = new HttpClient();
-        //GET
-        HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=Pet_door&formatversion=2");
-        string respString = await resp.Content.ReadAsStringAsync();
-
-        //Parsing response
-        Stream responseStream = resp.Content.ReadAsStream();
-        JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
-        JsonElement parseResult = jsonRoot.GetProperty("parse");
-        title = parseResult.GetProperty("title").GetString()!;
-    }
-    catch
-        {
-        //todo: catch errors
-
-    }*/
-    }
-
-    private async Task FetchRandomPage()
-    {
+        if (title.Equals("None"))
+            await FetchPagesInCategory("Physics");
 
         try
         {
             var client = new HttpClient();
             //GET
-            HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnlimit=1&rnfilterredir=nonredirects&rnnamespace=0");
+            HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=" + title + "&formatversion=2");
             string respString = await resp.Content.ReadAsStringAsync();
 
             //Parsing response
             Stream responseStream = resp.Content.ReadAsStream();
             JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
-            System.Diagnostics.Debug.WriteLine(jsonRoot.GetProperty("query").GetProperty("random")[0].GetRawText());
-            JsonElement parseResult = jsonRoot.GetProperty("query").GetProperty("random")[0].GetProperty("title");
-            title = parseResult.GetString()!;
+            JsonElement parseResult = jsonRoot.GetProperty("parse");
+            hint1 = parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!;
+            hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!);
         }
         catch
         {
@@ -62,4 +44,92 @@
 
         }
     }
+
+    private async Task FetchPagesInCategory(string category)
+    {
+        //https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Games
+
+        List<string> Articles = new List<string>();
+        try
+        {
+            string continueString = "";
+            do
+            {
+                var client = new HttpClient();
+                //GET
+                HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=query&format=json&cmlimit=100&list=categorymembers&cmtitle=Category:" + category + continueString);
+                string respString = await resp.Content.ReadAsStringAsync();
+
+                //Parsing response
+                Stream responseStream = resp.Content.ReadAsStream();
+                JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
+                JsonElement parseResult = jsonRoot.GetProperty("query").GetProperty("categorymembers");
+
+                //Listing all category members
+                for (int i = 0; i < parseResult.GetArrayLength(); ++i)
+                {
+                    Articles.Add(parseResult[i].GetProperty("title").GetString()!);
+                }
+
+                JsonElement continueProperty = new JsonElement();
+                jsonRoot.TryGetProperty("continue", out continueProperty);
+                if (continueProperty.ToString().Length > 0)
+                {
+                    continueString = "&cmcontinue=" + continueProperty.GetProperty("cmcontinue").GetString()!;
+                }
+                else
+                    continueString = "";
+
+            } while (continueString.Length > 0);
+
+            //Picking a random article to be the daily article in this category
+            title = Articles[new System.Random(GetRandomSeed()).Next(0, Articles.Count)];
+        }
+        catch
+        {
+            //todo: catch errors
+
+        }
+    }
+
+    private string ParseWikipediaMarkup(string source)
+    {
+        string parsed = "";
+        //Extracting the paragraphs
+        int index = source.IndexOf("<p>") + 3;
+        while (index > 2 && index < source.Length && source.Substring(index).Contains("<p>"))
+        {
+            //todo: parse correctly
+            parsed += source.Substring(index, source.IndexOf("</p>", index)) + "\n";
+            index = source.IndexOf("<p>",index) + 3;
+        }
+
+        return parsed;
+    }
+
+    private int FindClosingTagIndex(string source, int start)
+    {
+        int index = start;
+        int stack = 0;
+        while (index < source.Length)
+        {
+            if (source[index].Equals('<'))
+                ++stack;
+            if (source[index].Equals('>'))
+            {
+                if (stack == 0)
+                    return index;
+                else
+                    --stack;
+            }
+            index++;
+        }
+        return index;
+    }
+
+    private int GetRandomSeed()
+    {
+        return DateTime.UtcNow.Year*366 + DateTime.UtcNow.DayOfYear;
+    }
+
 }
