@@ -37,7 +37,7 @@
             Stream responseStream = resp.Content.ReadAsStream();
             JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
             JsonElement parseResult = jsonRoot.GetProperty("parse");
-            hint1 = parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!;
+            hint1 = CensorHint(title, parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!);
             hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true);
         }
         catch
@@ -120,9 +120,6 @@
                     parsed += "<" + tag + ">";
                 }
 
-                if (tagName.Equals("p"))
-                    System.Diagnostics.Debug.WriteLine(paragraphContent);
-
                 //paragraphs may contain tags such as <sup> that should be removed
                 parsed += ParseWikipediaMarkup(paragraphContent, false);
                 if (tag.Equals("b") || tag.Equals("i"))
@@ -154,27 +151,20 @@
             }
         }
 
+        parsed = CensorHint(title, parsed);
         return (MarkupString)parsed;
     }
 
-    private int FindClosingTagIndex(string source, int start)
+    private string CensorHint(string title, string hint)
     {
-        int index = start;
-        int stack = 0;
-        while (index < source.Length)
+        string[] titleWords = title.Split(' ');
+
+        string censoredHint = hint + "";
+        for(int i = 0; i < titleWords.Length; ++i)
         {
-            if (source[index].Equals('<'))
-                ++stack;
-            if (source[index].Equals('>'))
-            {
-                if (stack == 0)
-                    return index;
-                else
-                    --stack;
-            }
-            index++;
+            censoredHint = censoredHint.Replace(titleWords[i], new String('#', titleWords[i].Length), StringComparison.InvariantCultureIgnoreCase);
         }
-        return index;
+        return censoredHint;
     }
 
     private int GetRandomSeed()
