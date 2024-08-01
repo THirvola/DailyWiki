@@ -5,16 +5,17 @@
 <PageTitle>Home</PageTitle>
 
 <h1>Daily Wikipedia page guessing game</h1>
-
+<h2>Category: @category</h2>
 <h2>Title: @title</h2>
 <h3>hint 1: @hint1</h3>
-<p>hint 2: @hint2</p>
+<p>hint 2:</p> @hint2
 
 @code{
     string title = "None";
     string pageId = "0";
     string hint1 = "None";
-    string hint2 = "None";
+    string category = "Physics";
+    MarkupString hint2 = (MarkupString)"None";
 
     /// <summary>
     /// Ran automatically on initialization. Used for initializing the page
@@ -28,6 +29,7 @@
         {
             var client = new HttpClient();
             //GET
+            System.Diagnostics.Debug.WriteLine(title);
             HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=" + title + "&formatversion=2");
             string respString = await resp.Content.ReadAsStringAsync();
 
@@ -36,7 +38,7 @@
             JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
             JsonElement parseResult = jsonRoot.GetProperty("parse");
             hint1 = parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!;
-            hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!);
+            hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true);
         }
         catch
         {
@@ -68,12 +70,13 @@
                 //Listing all category members
                 for (int i = 0; i < parseResult.GetArrayLength(); ++i)
                 {
-                    Articles.Add(parseResult[i].GetProperty("title").GetString()!);
+                    if (parseResult[i].GetProperty("ns").GetInt32() == 0)
+                        Articles.Add(parseResult[i].GetProperty("title").GetString()!);
                 }
 
                 JsonElement continueProperty = new JsonElement();
                 jsonRoot.TryGetProperty("continue", out continueProperty);
-                if (continueProperty.ToString().Length > 0)
+                if (continueProperty.ValueKind != JsonValueKind.Undefined)
                 {
                     continueString = "&cmcontinue=" + continueProperty.GetProperty("cmcontinue").GetString()!;
                 }
@@ -92,19 +95,66 @@
         }
     }
 
-    private string ParseWikipediaMarkup(string source)
+    private MarkupString ParseWikipediaMarkup(string source, bool stopAtHeader)
     {
         string parsed = "";
         //Extracting the paragraphs
-        int index = source.IndexOf("<p>") + 3;
-        while (index > 2 && index < source.Length && source.Substring(index).Contains("<p>"))
+        int index = source.IndexOf("<");
+        if (index > 0)
+            parsed = source.Substring(0, index);
+        else if (index < 0)
+            parsed = source;
+        while (index >= 0 && index < source.Length && source.Substring(index).Contains("<"))
         {
-            //todo: parse correctly
-            parsed += source.Substring(index, source.IndexOf("</p>", index)) + "\n";
-            index = source.IndexOf("<p>",index) + 3;
+            string tag = source.Substring(index + 1, source.IndexOf(">", index) - index - 1);
+            string tagName = tag.Split(' ')[0];
+            if (stopAtHeader && tagName.Length == 2 && tagName.StartsWith("h"))
+                break;
+            if (tag.Equals("p") || tag.Equals("i") || tag.Equals("b") || tagName.Equals("a"))
+            {
+                int tagEnd = source.IndexOf("</" + tagName + ">", index)+4;
+                int nextTagStart = source.IndexOf("<", tagEnd);
+                string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 6 - tag.Length);
+                if (tag.Equals("b") || tag.Equals("i"))
+                {
+                    parsed += "<" + tag + ">";
+                }
+
+                if (tagName.Equals("p"))
+                    System.Diagnostics.Debug.WriteLine(paragraphContent);
+
+                //paragraphs may contain tags such as <sup> that should be removed
+                parsed += ParseWikipediaMarkup(paragraphContent, false);
+                if (tag.Equals("b") || tag.Equals("i"))
+                {
+                    parsed += "</" + tag + ">";
+                }
+
+                if (nextTagStart > tagEnd)
+                    parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
+                index = nextTagStart;
+            }
+            else if (tag.EndsWith("/") || tag.StartsWith("/") || tagName.Equals("div") || !source.Contains("</" + tagName + ">"))
+            {
+                int tagEnd = source.IndexOf(">", index);
+                int nextTagStart = source.IndexOf("<", tagEnd);
+                if (nextTagStart > tagEnd + 1)
+                    parsed += source.Substring(tagEnd + 1, nextTagStart - tagEnd - 1);
+                index = nextTagStart;
+            }
+            else
+            {
+                int tagEnd = source.IndexOf("</" + tagName + ">", index) + 3 + tagName.Length;
+                if (tagEnd < tagName.Length + 3)
+                    break;
+                int nextTagStart = source.IndexOf("<", tagEnd);
+                if (nextTagStart > tagEnd)
+                    parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
+                index = nextTagStart;
+            }
         }
 
-        return parsed;
+        return (MarkupString)parsed;
     }
 
     private int FindClosingTagIndex(string source, int start)
@@ -129,7 +179,7 @@
 
     private int GetRandomSeed()
     {
-        return DateTime.UtcNow.Year*366 + DateTime.UtcNow.DayOfYear;
+        return DateTime.UtcNow.Year*366 + DateTime.UtcNow.DayOfYear +1;
     }
 
 }
