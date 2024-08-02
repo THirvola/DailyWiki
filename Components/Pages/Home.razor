@@ -1,4 +1,5 @@
 ﻿@using System.Text.Json
+@using DailyWiki.Scripts
 @page "/"
 @rendermode InteractiveServer
 
@@ -7,6 +8,7 @@
 <h1>Daily Wikipedia page guessing game</h1>
 <h2>Category: @category</h2>
 <h2>Title: @title</h2>
+<h2>Tries: @attempts</h2>
 <h3>hint 1: @hint1</h3>
 <p>hint 2:</p> @hint2
 
@@ -16,6 +18,7 @@
 }
 
 @code{
+    int attempts = 0;
     string title = "None";
     string pageId = "0";
     string hint1 = "None";
@@ -29,7 +32,10 @@
     protected override async Task OnInitializedAsync()
     {
         if (title.Equals("None"))
-            await FetchPagesInCategory("Physics");
+        {
+            options = await WikipediaAPI.FetchPagesInCategory("Physics");
+            title = options[new System.Random(GameEngine.GetRandomSeed()).Next(0, options.Count)];
+        }
 
         try
         {
@@ -43,57 +49,9 @@
             Stream responseStream = resp.Content.ReadAsStream();
             JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
             JsonElement parseResult = jsonRoot.GetProperty("parse");
-            hint1 = CensorHint(title, parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!);
-            hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true, false);
-        }
-        catch
-        {
-            //todo: catch errors
+            hint1 = GameEngine.CensorHint(title, parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!);
+            hint2 = (MarkupString)GameEngine.CensorHint(title, WikipediaAPI.ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true, false));
 
-        }
-    }
-
-    private async Task FetchPagesInCategory(string category)
-    {
-        //https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Games
-
-        List<string> Articles = new List<string>();
-        try
-        {
-            string continueString = "";
-            do
-            {
-                var client = new HttpClient();
-                //GET
-                HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=query&format=json&cmlimit=100&list=categorymembers&cmtitle=Category:" + category + continueString);
-                string respString = await resp.Content.ReadAsStringAsync();
-
-                //Parsing response
-                Stream responseStream = resp.Content.ReadAsStream();
-                JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
-                JsonElement parseResult = jsonRoot.GetProperty("query").GetProperty("categorymembers");
-
-                //Listing all category members
-                for (int i = 0; i < parseResult.GetArrayLength(); ++i)
-                {
-                    if (parseResult[i].GetProperty("ns").GetInt32() == 0)
-                        Articles.Add(parseResult[i].GetProperty("title").GetString()!);
-                }
-
-                JsonElement continueProperty = new JsonElement();
-                jsonRoot.TryGetProperty("continue", out continueProperty);
-                if (continueProperty.ValueKind != JsonValueKind.Undefined)
-                {
-                    continueString = "&cmcontinue=" + continueProperty.GetProperty("cmcontinue").GetString()!;
-                }
-                else
-                    continueString = "";
-
-            } while (continueString.Length > 0);
-
-            //Picking a random article to be the daily article in this category
-            title = Articles[new System.Random(GetRandomSeed()).Next(0, Articles.Count)];
-            options = Articles;
         }
         catch
         {
@@ -104,6 +62,7 @@
 
     private void PickAnswer(string answer)
     {
+        attempts++;
         if (answer.Equals(title))
             System.Diagnostics.Debug.WriteLine("correct!");
         else
@@ -111,87 +70,5 @@
 
     }
 
-    private MarkupString ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
-    {
-        string parsed = "";
-        //Extracting the paragraphs
-        int index = source.IndexOf("<");
-        if (index > 0)
-            parsed = source.Substring(0, index);
-        else if (index < 0)
-            parsed = source;
-        while (index >= 0 && index < source.Length && source.Substring(index).Contains("<"))
-        {
-            string tag = source.Substring(index + 1, source.IndexOf(">", index) - index - 1);
-            string tagName = tag.Split(' ')[0];
-            if (stopAtHeader && tagName.Length == 2 && tagName.StartsWith("h"))
-                break;
-            if (tag.Equals("p") || tag.Equals("i") || tag.Equals("b") || tagName.Equals("a"))
-            {
-                int tagEnd = source.IndexOf("</" + tagName + ">", index)+4;
-                int nextTagStart = source.IndexOf("<", tagEnd);
-                string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 6 - tag.Length);
-                if (tag.Equals("b") || tag.Equals("i"))
-                {
-                    parsed += "<" + tag + ">";
-                }
-
-                //paragraphs may contain tags such as <sup> that should be removed
-                parsed += ParseWikipediaMarkup(paragraphContent, false,true);
-                if (tag.Equals("b") || tag.Equals("i") || tag.Equals("p"))
-                {
-                    parsed += "</" + tag + ">";
-                }
-
-                if (nextTagStart > tagEnd && includeRawText)
-                    parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
-                else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
-                    parsed += source.Substring(tagEnd);
-                index = nextTagStart;
-            }
-            else if (tag.EndsWith("/") || tag.StartsWith("/") || tagName.Equals("div") || !source.Contains("</" + tagName + ">"))
-            {
-                int tagEnd = source.IndexOf(">", index)+1;
-                int nextTagStart = source.IndexOf("<", tagEnd);
-                if (nextTagStart > tagEnd && includeRawText)
-                    parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
-                else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
-                    parsed += source.Substring(tagEnd);
-                index = nextTagStart;
-            }
-            else
-            {
-                int tagEnd = source.IndexOf("</" + tagName + ">", index) + 3 + tagName.Length;
-                if (tagEnd < tagName.Length + 3)
-                    break;
-                int nextTagStart = source.IndexOf("<", tagEnd);
-                if (nextTagStart > tagEnd && includeRawText)
-                    parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
-                else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
-                    parsed += source.Substring(tagEnd);
-                index = nextTagStart;
-            }
-        }
-
-        parsed = CensorHint(title, parsed);
-        return (MarkupString)parsed;
-    }
-
-    private string CensorHint(string title, string hint)
-    {
-        string[] titleWords = title.Split(' ');
-
-        string censoredHint = hint + "";
-        for(int i = 0; i < titleWords.Length; ++i)
-        {
-            censoredHint = censoredHint.Replace(titleWords[i], new String('#', titleWords[i].Length), StringComparison.InvariantCultureIgnoreCase);
-        }
-        return censoredHint;
-    }
-
-    private int GetRandomSeed()
-    {
-        return DateTime.UtcNow.Year*366 + DateTime.UtcNow.DayOfYear +1;
-    }
 
 }
