@@ -10,11 +10,17 @@
 <h3>hint 1: @hint1</h3>
 <p>hint 2:</p> @hint2
 
+@foreach (string option in options)
+{
+    <button @onclick="(() => {PickAnswer(option);})">@option</button>
+}
+
 @code{
     string title = "None";
     string pageId = "0";
     string hint1 = "None";
     string category = "Physics";
+    List<string> options = new List<string>();
     MarkupString hint2 = (MarkupString)"None";
 
     /// <summary>
@@ -38,7 +44,7 @@
             JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
             JsonElement parseResult = jsonRoot.GetProperty("parse");
             hint1 = CensorHint(title, parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!);
-            hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true);
+            hint2 = ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true, false);
         }
         catch
         {
@@ -87,6 +93,7 @@
 
             //Picking a random article to be the daily article in this category
             title = Articles[new System.Random(GetRandomSeed()).Next(0, Articles.Count)];
+            options = Articles;
         }
         catch
         {
@@ -95,7 +102,16 @@
         }
     }
 
-    private MarkupString ParseWikipediaMarkup(string source, bool stopAtHeader)
+    private void PickAnswer(string answer)
+    {
+        if (answer.Equals(title))
+            System.Diagnostics.Debug.WriteLine("correct!");
+        else
+            System.Diagnostics.Debug.WriteLine("wrong!");
+
+    }
+
+    private MarkupString ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
     {
         string parsed = "";
         //Extracting the paragraphs
@@ -121,22 +137,26 @@
                 }
 
                 //paragraphs may contain tags such as <sup> that should be removed
-                parsed += ParseWikipediaMarkup(paragraphContent, false);
-                if (tag.Equals("b") || tag.Equals("i"))
+                parsed += ParseWikipediaMarkup(paragraphContent, false,true);
+                if (tag.Equals("b") || tag.Equals("i") || tag.Equals("p"))
                 {
                     parsed += "</" + tag + ">";
                 }
 
-                if (nextTagStart > tagEnd)
+                if (nextTagStart > tagEnd && includeRawText)
                     parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
+                else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
+                    parsed += source.Substring(tagEnd);
                 index = nextTagStart;
             }
             else if (tag.EndsWith("/") || tag.StartsWith("/") || tagName.Equals("div") || !source.Contains("</" + tagName + ">"))
             {
-                int tagEnd = source.IndexOf(">", index);
+                int tagEnd = source.IndexOf(">", index)+1;
                 int nextTagStart = source.IndexOf("<", tagEnd);
-                if (nextTagStart > tagEnd + 1)
-                    parsed += source.Substring(tagEnd + 1, nextTagStart - tagEnd - 1);
+                if (nextTagStart > tagEnd && includeRawText)
+                    parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
+                else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
+                    parsed += source.Substring(tagEnd);
                 index = nextTagStart;
             }
             else
@@ -145,8 +165,10 @@
                 if (tagEnd < tagName.Length + 3)
                     break;
                 int nextTagStart = source.IndexOf("<", tagEnd);
-                if (nextTagStart > tagEnd)
+                if (nextTagStart > tagEnd && includeRawText)
                     parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
+                else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
+                    parsed += source.Substring(tagEnd);
                 index = nextTagStart;
             }
         }
