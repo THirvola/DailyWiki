@@ -34,7 +34,7 @@ else
     string pageId = "0";
     string hint1 = "None";
     string category = "None";
-    List<string> categories = new List<string>() { "Physics", "Countries in Europe", "States of the United States", "Chemical elements", "Fish common names", "Chinese inventios" };
+    List<string> categories = new List<string>() { "Physics", "Countries in Europe", "States of the United States", "Chemical elements", "Fish common names", "Chinese inventions" };
     List<string> options = new List<string>();
     MarkupString hint2 = (MarkupString)"None";
 
@@ -53,7 +53,6 @@ else
         {
             var client = new HttpClient();
             //GET
-            System.Diagnostics.Debug.WriteLine(title);
             HttpResponseMessage resp = await client.GetAsync("https://en.wikipedia.org/w/api.php?action=parse&format=json&page=" + title + "&formatversion=2");
             string respString = await resp.Content.ReadAsStringAsync();
 

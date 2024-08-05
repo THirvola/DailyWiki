@@ -21,7 +21,7 @@ namespace DailyWiki.Scripts
                 string tagName = tag.Split(' ')[0];
                 if (stopAtHeader && tagName.Length == 2 && tagName.StartsWith("h"))
                     break;
-                if (tag.Equals("p") || (includeRawText && (tag.Equals("i") || tag.Equals("b") || tagName.Equals("a"))))
+                if (tagName.Equals("p") || (includeRawText && (tagName.Equals("i") || tagName.Equals("b") || tagName.Equals("a"))))
                 {
                     int tagEnd = source.IndexOf("</" + tagName + ">", index) + 4;
                     int nextTagStart = source.IndexOf("<", tagEnd);
@@ -44,7 +44,7 @@ namespace DailyWiki.Scripts
                         parsed += source.Substring(tagEnd);
                     index = nextTagStart;
                 }
-                else if (tag.EndsWith("/") || tag.StartsWith("/") || tagName.Equals("div") || !source.Contains("</" + tagName + ">"))
+                else if (tag.EndsWith("/") || tag.StartsWith("/") || tagName.Equals("span") || tagName.Equals("div") || !source.Substring(index).Contains("</" + tagName + ">"))
                 {
                     int tagEnd = source.IndexOf(">", index) + 1;
                     int nextTagStart = source.IndexOf("<", tagEnd);
