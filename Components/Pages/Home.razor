@@ -5,35 +5,47 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Daily Wikipedia page guessing game</h1>
-<h2>Category: @category</h2>
-<h2>Title: @title</h2>
-<h2>Tries: @attempts</h2>
-<h3>hint 1: @hint1</h3>
-<p>hint 2:</p> @hint2
-
-@foreach (string option in options)
+@if (category.Equals("None"))
 {
-    <button @onclick="(() => {PickAnswer(option);})">@option</button>
+    @foreach (string cat in categories)
+    {
+        <button @onclick="(async () => { await PickCategory(cat);})">@cat</button>
+    }
 }
+else
+{
+    <h1>Daily Wikipedia page guessing game</h1>
+    <h2>Category: @category</h2>
+    <h2>Title: @title</h2>
+    <h2>Tries: @attempts</h2>
+    <h3>hint 1: @hint1</h3>
+    <p>hint 2:</p> @hint2
+
+    @foreach (string option in options)
+    {
+        <button @onclick="(() => {PickAnswer(option);})">@option</button>
+    }
+}
+
 
 @code{
     int attempts = 0;
     string title = "None";
     string pageId = "0";
     string hint1 = "None";
-    string category = "Physics";
+    string category = "None";
+    List<string> categories = new List<string>() { "Physics", "Countries in Europe", "States of the United States", "Chemical elements", "Fish common names", "Chinese inventios" };
     List<string> options = new List<string>();
     MarkupString hint2 = (MarkupString)"None";
 
     /// <summary>
     /// Ran automatically on initialization. Used for initializing the page
     /// </summary>
-    protected override async Task OnInitializedAsync()
+    private async Task InitializeGame()
     {
         if (title.Equals("None"))
         {
-            options = await WikipediaAPI.FetchPagesInCategory("Physics");
+            options = await WikipediaAPI.FetchPagesInCategory(category);
             title = options[new System.Random(GameEngine.GetRandomSeed()).Next(0, options.Count)];
         }
 
@@ -68,6 +80,12 @@
         else
             System.Diagnostics.Debug.WriteLine("wrong!");
 
+    }
+
+    private async Task PickCategory(string categ)
+    {
+        category = categ;
+        await InitializeGame();
     }
 
 

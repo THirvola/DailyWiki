@@ -21,7 +21,7 @@ namespace DailyWiki.Scripts
                 string tagName = tag.Split(' ')[0];
                 if (stopAtHeader && tagName.Length == 2 && tagName.StartsWith("h"))
                     break;
-                if (tag.Equals("p") || tag.Equals("i") || tag.Equals("b") || tagName.Equals("a"))
+                if (tag.Equals("p") || (includeRawText && (tag.Equals("i") || tag.Equals("b") || tagName.Equals("a"))))
                 {
                     int tagEnd = source.IndexOf("</" + tagName + ">", index) + 4;
                     int nextTagStart = source.IndexOf("<", tagEnd);

@@ -13,9 +13,17 @@
             string[] titleWords = title.Split(' ');
 
             string censoredHint = hint + "";
+
+            //Replacing any instance of the full title with five # characters
+            censoredHint = censoredHint.Replace(title, "#####", StringComparison.InvariantCultureIgnoreCase);
+            
             for (int i = 0; i < titleWords.Length; ++i)
             {
-                censoredHint = censoredHint.Replace(titleWords[i], new String('#', titleWords[i].Length), StringComparison.InvariantCultureIgnoreCase);
+                //For replacing every letter with a # character 1:1
+                //censoredHint = censoredHint.Replace(titleWords[i], new String('#', titleWords[i].Length), StringComparison.InvariantCultureIgnoreCase);
+
+                //Replacing any instance of title's words with five # characters
+                censoredHint = censoredHint.Replace(titleWords[i], "#####", StringComparison.InvariantCultureIgnoreCase);
             }
             return censoredHint;
         }
