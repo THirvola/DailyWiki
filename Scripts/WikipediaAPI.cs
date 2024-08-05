@@ -31,7 +31,7 @@ namespace DailyWiki.Scripts
                         parsed += "<" + tag + ">";
                     }
 
-                    //paragraphs may contain tags such as <sup> that should be removed
+                    //paragraphs may contain tags such as <sup> references whose contents should be removed
                     parsed += ParseWikipediaMarkup(paragraphContent, false, true);
                     if (tag.Equals("b") || tag.Equals("i") || tag.Equals("p"))
                     {
@@ -57,13 +57,18 @@ namespace DailyWiki.Scripts
                 else
                 {
                     int tagEnd = source.IndexOf("</" + tagName + ">", index) + 3 + tagName.Length;
-                    if (tagEnd < tagName.Length + 3)
+                    if (tagEnd < tagName.Length + 3) //tag end was not found
                         break;
+
                     int nextTagStart = source.IndexOf("<", tagEnd);
+
+                    //including any raw text between the end of this tag and the start of the next one (or the end of the string)
                     if (nextTagStart > tagEnd && includeRawText)
                         parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
                     else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
                         parsed += source.Substring(tagEnd);
+                    
+                    //jumping to the start of the next tag
                     index = nextTagStart;
                 }
             }

@@ -5,6 +5,8 @@
 
 <PageTitle>Home</PageTitle>
 
+<h1>Daily Wikipedia page guessing game</h1>
+
 @if (category.Equals("None"))
 {
     @foreach (string cat in categories)
@@ -12,19 +14,28 @@
         <button @onclick="(async () => { await PickCategory(cat);})">@cat</button>
     }
 }
-else
+else if (!correctGuess)
 {
-    <h1>Daily Wikipedia page guessing game</h1>
     <h2>Category: @category</h2>
-    <h2>Title: @title</h2>
     <h2>Tries: @attempts</h2>
-    <h3>hint 1: @hint1</h3>
-    <p>hint 2:</p> @hint2
+    <h3>hint 1: </h3> <p>@hint1</p>
+    
+    //After 2 failed attempts, the 2nd hit is shown
+    if (attempts > 1)
+    {
+        <h3>hint 2:</h3> @hint2
+    }
 
     @foreach (string option in options)
     {
         <button @onclick="(() => {PickAnswer(option);})">@option</button>
     }
+}
+else
+{
+    <h2>Category: @category</h2>
+    <h2>Title: @title</h2>
+    <h2>Tries: @attempts</h2>
 }
 
 
@@ -36,6 +47,8 @@ else
     string category = "None";
     List<string> categories = new List<string>() { "Physics", "Countries in Europe", "States of the United States", "Chemical elements", "Fish common names", "Chinese inventions" };
     List<string> options = new List<string>();
+    bool correctGuess = false;
+    List<MarkupString> paragraphs = new List<MarkupString>();
     MarkupString hint2 = (MarkupString)"None";
 
     /// <summary>
@@ -61,8 +74,14 @@ else
             JsonElement jsonRoot = JsonDocument.Parse(responseStream).RootElement;
             JsonElement parseResult = jsonRoot.GetProperty("parse");
             hint1 = GameEngine.CensorHint(title, parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!);
-            hint2 = (MarkupString)GameEngine.CensorHint(title, WikipediaAPI.ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true, false));
-
+            string description = WikipediaAPI.ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true, false);
+            string[] splitDesc = description.Split("</p>", StringSplitOptions.RemoveEmptyEntries);
+            for (int i =0; i < splitDesc.Length; ++i)
+            {
+                paragraphs.Add((MarkupString)GameEngine.CensorHint(title, splitDesc[i] + "</p>"));
+            } 
+            if (paragraphs.Count > 0)
+                hint2 = paragraphs[0];
         }
         catch
         {
@@ -75,10 +94,10 @@ else
     {
         attempts++;
         if (answer.Equals(title))
-            System.Diagnostics.Debug.WriteLine("correct!");
-        else
-            System.Diagnostics.Debug.WriteLine("wrong!");
+            correctGuess = true;
 
+        if (attempts >= 4 && attempts % 2 == 0 && paragraphs.Count > (attempts-2) / 2)
+            hint2 = (MarkupString)(hint2.ToString() + paragraphs[(attempts - 2) / 2].ToString());
     }
 
     private async Task PickCategory(string categ)
