@@ -1,0 +1,12 @@
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\DailyWikiReact.Server.exe
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\DailyWikiReact.Server.dll
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\DailyWikiReact.Server.deps.json
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\DailyWikiReact.Server.runtimeconfig.json
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\DailyWikiReact.Server.pdb
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.SpaProxy.dll
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\DailyWikiReact.Server\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

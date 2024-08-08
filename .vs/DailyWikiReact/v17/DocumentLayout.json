@@ -1,0 +1,443 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\scripts\\gameengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\scripts\\gameengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\scripts\\wikipediaapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\scripts\\wikipediaapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\src\\app.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\vite.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\dailywikireact.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\dailywikireact.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\src\\main.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\src\\main.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\src\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\public\\vite.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\public\\vite.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\controllers\\gameinstancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\controllers\\gameinstancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\dailywikireact.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\dailywikireact.server.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\models\\gameinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\models\\gameinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\.vscode\\launch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\.vscode\\launch.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\nuget.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\nuget.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\.eslintrc.cjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\.eslintrc.cjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\dailywikireact.client.esproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\dailywikireact.client.esproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\dailywikireact.server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\dailywikireact.server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.client\\dailywikireact.client.esproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{2257C775-252A-485E-8D8A-5B9D71A0FCD6}|dailywikireact.client\\dailywikireact.client.esproj|solutionrelative:dailywikireact.client\\dailywikireact.client.esproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|c:\\omatstuffat\\kesa2018\\aspnet\\dailywiki\\dailywikireact\\dailywikireact.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B155103C-D55D-4551-8846-0F050C439BA5}|DailyWikiReact.Server\\DailyWikiReact.Server.csproj|solutionrelative:dailywikireact.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "vite.svg",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\public\\vite.svg",
+              "RelativeDocumentMoniker": "dailywikireact.client\\public\\vite.svg",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\public\\vite.svg",
+              "RelativeToolTip": "dailywikireact.client\\public\\vite.svg",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-08T16:53:01.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.jsx",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\App.jsx",
+              "RelativeDocumentMoniker": "dailywikireact.client\\src\\App.jsx",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\App.jsx",
+              "RelativeToolTip": "dailywikireact.client\\src\\App.jsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-08-07T09:46:32.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "vite.config.js",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\vite.config.js",
+              "RelativeDocumentMoniker": "dailywikireact.client\\vite.config.js",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\vite.config.js",
+              "RelativeToolTip": "dailywikireact.client\\vite.config.js",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAC0AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-07T09:04:54.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Program.cs",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\Program.cs",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Program.cs",
+              "RelativeToolTip": "DailyWikiReact.Server\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T09:05:02.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.css",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\App.css",
+              "RelativeDocumentMoniker": "dailywikireact.client\\src\\App.css",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\App.css",
+              "RelativeToolTip": "dailywikireact.client\\src\\App.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-07T09:46:29.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\.gitignore",
+              "RelativeDocumentMoniker": "dailywikireact.client\\.gitignore",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\.gitignore",
+              "RelativeToolTip": "dailywikireact.client\\.gitignore",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAEAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVDhPjVNLTgJBEG1lwpoFB3GNK9fieA48hD8iwT/ihwgSDAIHgAGXXsEV18CNzL/LquqZdsYM6kteXqcy3fWqpmpNRBgOhyABBEgpAFVKPIMUcYzUyOU\u002BXM/b2qtU3vkSfRjjZTCAMAw1A2LwzdFoBPP5HNqdzuL27n4juibWI\u002BUshBA1DIkhEx9iEorFotgslQqGYbxxAGFEqt1MxmPWJLbLZdZ\u002Bv89q5PMFPiTR6z2zdaxR0fXA0XTBcVywkb4fwHXjRteecIDNQ7UmExVYAdPcxYaqclN46na5WenMKjtlVnTYwcXlVYaDqImW9beD5N/TeGy32QHXm6hZ03ZgiSQHp2fnWQ4oBmJqWSqwAqZpZjt4aLXAD4J0VqyZsmoubfB8H2r1eoaD6NXZ9HcHO\u002BSA3f4AjifXl8rItOETM8ckB9WTWpYD9RdeZ1PWVWAHWXPQaDb59f/w8LiqHeh1pvGkCaP6qB8yXusoxmuNZ7XmII4O9vGuEF86osuDYRkpYQAAAABJRU5ErkJggg==",
+              "WhenOpened": "2024-08-07T09:08:28.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WikipediaAPI.cs",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Scripts\\WikipediaAPI.cs",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\Scripts\\WikipediaAPI.cs",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Scripts\\WikipediaAPI.cs",
+              "RelativeToolTip": "DailyWikiReact.Server\\Scripts\\WikipediaAPI.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAowEgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:09:46.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "index.css",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\index.css",
+              "RelativeDocumentMoniker": "dailywikireact.client\\src\\index.css",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\index.css",
+              "RelativeToolTip": "dailywikireact.client\\src\\index.css",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-07T14:03:06.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "main.jsx",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\main.jsx",
+              "RelativeDocumentMoniker": "dailywikireact.client\\src\\main.jsx",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\src\\main.jsx",
+              "RelativeToolTip": "dailywikireact.client\\src\\main.jsx",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2024-08-07T09:08:34.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DailyWikiReact.Server.csproj",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "RelativeToolTip": "DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-07T09:11:37.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\index.html",
+              "RelativeDocumentMoniker": "dailywikireact.client\\index.html",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\index.html",
+              "RelativeToolTip": "dailywikireact.client\\index.html",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-08-07T09:08:26.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameEngine.cs",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Scripts\\GameEngine.cs",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\Scripts\\GameEngine.cs",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Scripts\\GameEngine.cs",
+              "RelativeToolTip": "DailyWikiReact.Server\\Scripts\\GameEngine.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:07:55.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GameInstance.cs",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Models\\GameInstance.cs",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\Models\\GameInstance.cs",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Models\\GameInstance.cs",
+              "RelativeToolTip": "DailyWikiReact.Server\\Models\\GameInstance.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T09:05:15.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DailyWikiReact.Server.http",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\DailyWikiReact.Server.http",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\DailyWikiReact.Server.http",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\DailyWikiReact.Server.http",
+              "RelativeToolTip": "DailyWikiReact.Server\\DailyWikiReact.Server.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-08-07T09:05:50.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GameInstanceController.cs",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Controllers\\GameInstanceController.cs",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\Controllers\\GameInstanceController.cs",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Controllers\\GameInstanceController.cs",
+              "RelativeToolTip": "DailyWikiReact.Server\\Controllers\\GameInstanceController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T09:16:42.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "launch.json",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\.vscode\\launch.json",
+              "RelativeDocumentMoniker": "dailywikireact.client\\.vscode\\launch.json",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\.vscode\\launch.json",
+              "RelativeToolTip": "dailywikireact.client\\.vscode\\launch.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T08:43:14.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\package.json",
+              "RelativeDocumentMoniker": "dailywikireact.client\\package.json",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\package.json",
+              "RelativeToolTip": "dailywikireact.client\\package.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T09:08:23.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\appsettings.json",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\appsettings.json",
+              "RelativeToolTip": "DailyWikiReact.Server\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T09:06:02.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "nuget.config",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\nuget.config",
+              "RelativeDocumentMoniker": "dailywikireact.client\\nuget.config",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\nuget.config",
+              "RelativeToolTip": "dailywikireact.client\\nuget.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-08-07T09:08:25.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": ".eslintrc.cjs",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\.eslintrc.cjs",
+              "RelativeDocumentMoniker": "dailywikireact.client\\.eslintrc.cjs",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\.eslintrc.cjs",
+              "RelativeToolTip": "dailywikireact.client\\.eslintrc.cjs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-07T15:31:53.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\README.md",
+              "RelativeDocumentMoniker": "dailywikireact.client\\README.md",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\README.md",
+              "RelativeToolTip": "dailywikireact.client\\README.md",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2024-08-07T14:09:58.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "dailywikireact.client.esproj",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\dailywikireact.client.esproj",
+              "RelativeDocumentMoniker": "dailywikireact.client\\dailywikireact.client.esproj",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\dailywikireact.client.esproj",
+              "RelativeToolTip": "dailywikireact.client\\dailywikireact.client.esproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-07T09:16:37.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "dailywikireact.client",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\dailywikireact.client.esproj",
+              "RelativeDocumentMoniker": "dailywikireact.client\\dailywikireact.client.esproj",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\dailywikireact.client\\dailywikireact.client.esproj",
+              "RelativeToolTip": "dailywikireact.client\\dailywikireact.client.esproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-07T09:10:01.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DailyWikiReact.Server",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "RelativeToolTip": "DailyWikiReact.Server\\DailyWikiReact.Server.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-08-07T08:39:59.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "DailyWikiReact.Server\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Omatstuffat\\kesa2018\\ASPNET\\DailyWiki\\DailyWikiReact\\DailyWikiReact.Server\\Properties\\launchSettings.json",
+              "RelativeToolTip": "DailyWikiReact.Server\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-07T08:47:11.414Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

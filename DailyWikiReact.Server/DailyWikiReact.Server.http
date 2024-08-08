@@ -1,0 +1,6 @@
+@DailyWikiReact.Server_HostAddress = http://localhost:5044
+
+GET {{DailyWikiReact.Server_HostAddress}}/gameinstance/
+Accept: application/json
+
+###
