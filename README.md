@@ -9,6 +9,7 @@ The game is as follows:
 - Statistics of global completions will be stored in a database
 
 Tech stack is as follows:
-- Frontend will be created with React/C#/HTML
+- Frontend will be created with React/HTML
+- Backend is ASP.NET C#
 - Game logic and Wikipedia API handling is done via C#
 - CI/CD is set up with Github Actions
