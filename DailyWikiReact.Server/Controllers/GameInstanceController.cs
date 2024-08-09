@@ -20,9 +20,9 @@ namespace DailyWikiReact.Server.Controllers
         }
 
         [HttpGet(Name = "GetGameInstance")]
-        public IEnumerable<GameInstance> Get()
+        public IEnumerable<GameInstance> Get(string category)
         {
-            string category = Categories[Random.Shared.Next(Categories.Length)];
+            //string category = Categories[Random.Shared.Next(Categories.Length)];
             string title = GameEngine.GetDailyTitle(category).Result;
             List<string> hints = GameEngine.GetHints(title).Result;
             string hint1 = hints[0];

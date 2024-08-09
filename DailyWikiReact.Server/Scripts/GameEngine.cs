@@ -38,6 +38,10 @@ namespace DailyWikiReact.Server
                 return title;
         }
 
+        /// <summary>
+        /// Gets the hints related to the given title
+        /// </summary>
+        /// <returns>List of hint strings. First index is the short description and the rest are paragraphs in the article.</returns>
         public static async Task<List<string>> GetHints(string title)
         {
             JsonElement parseResult = await WikipediaAPI.GetWikipediaPage(title);

@@ -1,1 +1,0 @@
-C:\Omatstuffat\kesa2018\ASPNET\DailyWiki\DailyWikiReact\dailywikireact.client\obj\Debug\dailywikireact.client.esproj.CoreCompileInputs.cache

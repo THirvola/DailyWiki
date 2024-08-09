@@ -26,16 +26,21 @@ namespace DailyWikiReact.Server
                     int tagEnd = source.IndexOf("</" + tagName + ">", index) + 4;
                     int nextTagStart = source.IndexOf("<", tagEnd);
                     string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 6 - tag.Length);
-                    if (tag.Equals("b") || tag.Equals("i"))
-                    {
-                        parsed += "<" + tag + ">";
-                    }
 
                     //paragraphs may contain tags such as <sup> references whose contents should be removed
-                    parsed += ParseWikipediaMarkup(paragraphContent, false, true);
-                    if (tag.Equals("b") || tag.Equals("i") || tag.Equals("p"))
-                    {
-                        parsed += "</" + tag + ">";
+                    string trimmedContents = ParseWikipediaMarkup(paragraphContent, false, true);
+
+                    if (trimmedContents.Trim().Length > 0) {
+                        if (tagName.Equals("b") || tagName.Equals("i") || tagName.Equals("p"))
+                        {
+                            parsed += "<" + tagName + ">";
+                        }
+
+                        parsed += trimmedContents;
+                        if (tagName.Equals("b") || tagName.Equals("i") || tagName.Equals("p"))
+                        {
+                            parsed += "</" + tagName + ">";
+                        }
                     }
 
                     if (nextTagStart > tagEnd && includeRawText)
