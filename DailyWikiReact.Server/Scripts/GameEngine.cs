@@ -31,11 +31,14 @@ namespace DailyWikiReact.Server
             return censoredHint;
         }
 
-        public static async Task<string> GetDailyTitle(string category)
+        /// <summary>
+        /// Get all the relevant titles in the given category.
+        /// </summary>
+        /// <returns>List of all the titles</returns>
+        public static async Task<List<string>> GetCategoryTitles(string category)
         {
                 List<string> options = await WikipediaAPI.FetchPagesInCategory(category);
-                string title = options[new System.Random(GetRandomSeed()).Next(0, options.Count)];
-                return title;
+                return options;
         }
 
         /// <summary>

@@ -11,5 +11,7 @@ namespace DailyWikiReact.Server.Models
         public string? Hint1 { get; set; }
 
         public List<string>? Hint2 { get; set; }
+
+        public List<string>? Options { get; set; }
     }
 }

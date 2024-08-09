@@ -1,5 +1,6 @@
 using DailyWikiReact.Server.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace DailyWikiReact.Server.Controllers
 {
@@ -23,7 +24,8 @@ namespace DailyWikiReact.Server.Controllers
         public IEnumerable<GameInstance> Get(string category)
         {
             //string category = Categories[Random.Shared.Next(Categories.Length)];
-            string title = GameEngine.GetDailyTitle(category).Result;
+            List<string> options = GameEngine.GetCategoryTitles(category).Result;
+            string title = options[new Random(GameEngine.GetRandomSeed()).Next(0, options.Count)];
             List<string> hints = GameEngine.GetHints(title).Result;
             string hint1 = hints[0];
             hints.RemoveAt(0);
@@ -33,7 +35,8 @@ namespace DailyWikiReact.Server.Controllers
                 Category = category,
                 Title = title,
                 Hint1 = hint1,
-                Hint2 = hints
+                Hint2 = hints,
+                Options = options
 
             }};
         }

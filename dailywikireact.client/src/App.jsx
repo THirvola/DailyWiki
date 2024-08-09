@@ -1,37 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
+
+const categories = ["Physics", "Countries in Europe", "States of the United States", "Chemical elements", "Fish common names", "Chinese inventions"];
 
 function App() {
     const [gameInstance, setGameInstance] = useState();
-    
-    useEffect(() => {
-        populateGameData();
-    }, []);
 
-    const contents = gameInstance === undefined
-        ? <p><em>Loading... </em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Title</th>
-                    <th>Hint 1</th>
-                    <th>Hint 2</th>
-                </tr>
-            </thead>
-            <tbody>
-                {gameInstance.map(gameInstance =>
-                    <tr key={gameInstance.date}>
-                        <td>{gameInstance.date}</td>
-                        <td>{gameInstance.category}</td>
-                        <td>{gameInstance.title}</td>
-                        <td>{gameInstance.hint1}</td>
-                        <td dangerouslySetInnerHTML={{ __html: gameInstance.hint2 }}></td>
-                    </tr>
+    var contents = <p><em>Loading... </em></p>;
+    if (gameInstance === undefined) {
+        const gameStartingDiv =
+            <div>
+                {categories.map(category =>
+                    <button key={category} onClick={() => {
+                        populateGameData(category);
+                    }}>{category}</button>
                 )}
-            </tbody>
-        </table>;
+            </div>;
+        contents = gameStartingDiv;
+
+    }
+    else {
+        const gameActiveDiv = <div>
+            <p>Date: {gameInstance[0].date}</p>
+            <p>Category: {gameInstance[0].category}</p>
+            <p>Title: {gameInstance[0].title}</p>
+            <p>Hint 1: {gameInstance[0].hint1}</p>
+            <p dangerouslySetInnerHTML={{ __html: 'Hint 2: ' + gameInstance[0].hint2 }} />
+            {gameInstance[0].options.map(option =>
+                <button key={option}>{option}</button>
+            )}
+        </div>;
+        contents = gameActiveDiv;
+    }
 
     return (
         <div>
@@ -40,9 +40,10 @@ function App() {
             {contents}
         </div>
     );
-    
-    async function populateGameData() {
-        const response = await fetch('gameinstance?category=Physics');
+
+    async function populateGameData(category) {
+
+        const response = await fetch('gameinstance?category=' + category);
         const data = await response.json();
         setGameInstance(data);
     }
