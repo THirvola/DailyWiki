@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
+using System.Diagnostics;
+using System.Security.Cryptography.Xml;
 using System.Text.Json;
 
 namespace DailyWikiReact.Server
@@ -47,18 +49,26 @@ namespace DailyWikiReact.Server
         /// <returns>List of hint strings. First index is the short description and the rest are paragraphs in the article.</returns>
         public static async Task<List<string>> GetHints(string title)
         {
+            List<string> hints = new List<string>();
+
             JsonElement parseResult = await WikipediaAPI.GetWikipediaPage(title);
+
+            JsonElement properties = parseResult.GetProperty("properties");
+            JsonElement shortDesc;
+            bool shortDescExists = properties.TryGetProperty("wikibase-shortdesc", out shortDesc);
+            if (shortDescExists)
+            {
+                string hint1 = CensorHint(title, shortDesc.GetString()!);
+                hints.Add(hint1);
+            }
             
-            string hint1 = CensorHint(title, parseResult.GetProperty("properties").GetProperty("wikibase-shortdesc").GetString()!);
             string description = WikipediaAPI.ParseWikipediaMarkup(parseResult.GetProperty("text").GetString()!, true, false);
             string[] splitDesc = description.Split("</p>", StringSplitOptions.RemoveEmptyEntries);
-            List<string> hints = new List<string>() { hint1 };
             
             for (int i = 0; i < splitDesc.Length; ++i)
             {
                 hints.Add(CensorHint(title, splitDesc[i] + "</p>"));
             }
-
             return hints;
         }
 

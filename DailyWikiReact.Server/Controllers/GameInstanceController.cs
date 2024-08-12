@@ -40,5 +40,18 @@ namespace DailyWikiReact.Server.Controllers
 
             }};
         }
+
+        /*
+         * todo: use fetch in REACT to POST the result of the game (along with a fingerprint and all data that will be saved in the database)
+         *Receive the data in a method akin to the following
+         [HttpPost]
+[Route("test")]
+public object Test([FromHeader] string token, [FromForm] MyDataClass data)
+{
+    // check token
+    // do something with data
+    return CustomResult.Ok;
+}
+         */
     }
 }

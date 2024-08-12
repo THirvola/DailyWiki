@@ -110,8 +110,8 @@ namespace DailyWikiReact.Server
                     }
 
                     JsonElement continueProperty = new JsonElement();
-                    jsonRoot.TryGetProperty("continue", out continueProperty);
-                    if (continueProperty.ValueKind != JsonValueKind.Undefined)
+                    bool hasContinue = jsonRoot.TryGetProperty("continue", out continueProperty);
+                    if (hasContinue)
                     {
                         continueString = "&cmcontinue=" + continueProperty.GetProperty("cmcontinue").GetString()!;
                     }

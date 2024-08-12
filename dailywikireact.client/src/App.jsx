@@ -24,10 +24,12 @@ function App() {
             <p>Date: {gameInstance[0].date}</p>
             <p>Category: {gameInstance[0].category}</p>
             <p>Title: {gameInstance[0].title}</p>
-            <p>Hint 1: {gameInstance[0].hint1}</p>
+            <p dangerouslySetInnerHTML={{ __html: 'Hint 1: ' + gameInstance[0].hint1 }} />
             <p dangerouslySetInnerHTML={{ __html: 'Hint 2: ' + gameInstance[0].hint2 }} />
             {gameInstance[0].options.map(option =>
-                <button key={option}>{option}</button>
+                <button key={option} onClick={() => {
+                    populateGameData(option);
+                }}>{option}</button>
             )}
         </div>;
         contents = gameActiveDiv;
@@ -41,12 +43,18 @@ function App() {
         </div>
     );
 
-    async function populateGameData(category) {
+    async function populateGameData(category)
+    {
 
         const response = await fetch('gameinstance?category=' + category);
         const data = await response.json();
         setGameInstance(data);
     }
+    /*
+    async function PickOption(option)
+    {
+        //todo: post message to server
+    }*/
 }
 
 export default App;
