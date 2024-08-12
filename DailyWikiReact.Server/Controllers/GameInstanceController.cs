@@ -8,11 +8,6 @@ namespace DailyWikiReact.Server.Controllers
     [Route("[controller]")]
     public class GameInstanceController : ControllerBase
     {
-        private static readonly string[] Categories = new[]
-        {
-            "Physics", "Countries in Europe", "States of the United States", "Chemical elements", "Fish common names", "Chinese inventions"
-        };
-
         private readonly ILogger<GameInstanceController> _logger;
 
         public GameInstanceController(ILogger<GameInstanceController> logger)
@@ -36,7 +31,9 @@ namespace DailyWikiReact.Server.Controllers
                 Title = title,
                 Hint1 = hint1,
                 Hint2 = hints,
-                Options = options
+                Options = options,
+                Tries = 0,
+                gameEnd = false
 
             }};
         }
