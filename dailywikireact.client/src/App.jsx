@@ -72,28 +72,24 @@ function App() {
             gameInstance[0].gameEnd = true;
             //todo: send a POST request with fetch() to the server
 
-            /* 
-            akin to the following:
-
             let formData = new FormData();
-Object.keys(data).forEach(function (key) {
-    formData.append(key, data[key]);
-});
+            Object.keys(gameInstance[0]).forEach(function (key) {
+                formData.append(key, gameInstance[0][key]);
+            });
 
-            fetch("localhost/api/test", {
-    method: 'POST',
-    headers: {
-        'Token': "dummy-token"
-        // DON'T overwrite Content-Type header
-    },
-    body: formData
-}).then(result => result.json()).then(
-    (result) => {
-        console.log(result);
-    }
-);
+            fetch("gameinstance/postgameresult", {
+                method: 'POST',
+                headers: {
+                    'Token': "Game result"
+                },
+                body: formData
+            }).then(result => result.json()).then( 
+                (result) => {
+                    console.log(result);
+                }
+            );
 
-            */
+            
         }
 
         setGameInstance(gameInstance);
