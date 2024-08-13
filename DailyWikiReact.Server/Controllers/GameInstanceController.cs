@@ -51,6 +51,5 @@ namespace DailyWikiReact.Server.Controllers
 
             return new string[1] { "Failed" };
         }
-         
     }
 }

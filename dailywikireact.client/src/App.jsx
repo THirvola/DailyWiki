@@ -11,7 +11,7 @@ function App() {
         const gameStartingDiv =
             <div>
                 {categories.map(category =>
-                    <button key={category} onClick={() => {
+                    <button key={category} onClick={async () => {
                         populateGameData(category);
                     }}>{category}</button>
                 )}
@@ -28,7 +28,7 @@ function App() {
                 <p dangerouslySetInnerHTML={{ __html: 'Hint 1: ' + gameInstance[0].hint1 }} />
                 <p dangerouslySetInnerHTML={{ __html: 'Hint 2: ' + gameInstance[0].hint2 }} />
                 {gameInstance[0].options.map(option =>
-                    <button key={option} onClick={() => {
+                    <button key={option} onClick={async () => {
                         pickOption(option);
                     }}>{option}</button>
                 )}
@@ -59,40 +59,39 @@ function App() {
 
         const response = await fetch('gameinstance?category=' + category);
         const data = await response.json();
-        setGameInstance(data);
+        await setGameInstance(data);
     }
     
     async function pickOption(option)
     {
-        gameInstance[0].tries = gameInstance[0].tries + 1;
-        console.log(gameInstance[0].tries);
+        var newState = [...gameInstance];
+        newState[0].tries = newState[0].tries + 1;
+        console.log(newState[0].tries);
         //todo: post message to server
-        if (gameInstance[0].title == option)
+        if (newState[0].title == option)
         {
-            gameInstance[0].gameEnd = true;
+            newState[0].gameEnd = true;
             //todo: send a POST request with fetch() to the server
 
             let formData = new FormData();
-            Object.keys(gameInstance[0]).forEach(function (key) {
-                formData.append(key, gameInstance[0][key]);
+            Object.keys(newState[0]).forEach(function (key) {
+                formData.append(key, newState[0][key]);
             });
 
-            fetch("gameinstance/postgameresult", {
+            const response = await fetch("gameinstance/postgameresult", {
                 method: 'POST',
                 headers: {
                     'Token': "Game result"
                 },
                 body: formData
-            }).then(result => result.json()).then( 
-                (result) => {
-                    console.log(result);
-                }
-            );
+            });
+            const result = await response.json();
+            console.log(result[0]);
 
             
         }
 
-        setGameInstance(gameInstance);
+        await setGameInstance(newState);
     }
 }
 
