@@ -7,7 +7,8 @@ function App() {
     const [gameInstance, setGameInstance] = useState();
 
     var contents = <p><em>Loading... </em></p>;
-    if (gameInstance === undefined) {
+    if (gameInstance === undefined)
+    {
         const gameStartingDiv =
             <div>
                 {categories.map(category =>
@@ -19,7 +20,8 @@ function App() {
         contents = gameStartingDiv;
 
     }
-    else {
+    else if (gameInstance != "Loading")
+    {
         if (!gameInstance[0].gameEnd) {
             const gameActiveDiv = <div>
                 <p>Date: {gameInstance[0].date}</p>
@@ -35,7 +37,8 @@ function App() {
             </div>;
             contents = gameActiveDiv;
         }
-        else {
+        else
+        {
             const gameEndDiv = <div>
                 <p>Date: {gameInstance[0].date}</p>
                 <p>Category: {gameInstance[0].category}</p>
@@ -56,6 +59,8 @@ function App() {
 
     async function populateGameData(category)
     {
+        //Initially set the state to something that allows to frontend to know it's being updated
+        await setGameInstance("Loading");
 
         const response = await fetch('gameinstance?category=' + category);
         const data = await response.json();

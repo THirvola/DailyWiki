@@ -23,8 +23,9 @@ namespace DailyWikiReact.Server
                     break;
                 if (tagName.Equals("p") || (includeRawText && (tagName.Equals("i") || tagName.Equals("b") || tagName.Equals("a"))))
                 {
-                    int tagEnd = source.IndexOf("</" + tagName + ">", index) + 4;
+                    int tagEnd = ClosingTagIndex(source, index, tagName) + tagName.Length + 3;
                     int nextTagStart = source.IndexOf("<", tagEnd);
+
                     string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 6 - tag.Length);
 
                     //paragraphs may contain tags such as <sup> references whose contents should be removed
@@ -61,7 +62,7 @@ namespace DailyWikiReact.Server
                 }
                 else
                 {
-                    int tagEnd = source.IndexOf("</" + tagName + ">", index) + 3 + tagName.Length;
+                    int tagEnd = ClosingTagIndex(source, index, tagName) + tagName.Length + 3;
                     if (tagEnd < tagName.Length + 3) //tag end was not found
                         break;
 
@@ -81,6 +82,40 @@ namespace DailyWikiReact.Server
             return parsed;
         }
 
+        private static int ClosingTagIndex(string source, int tagStart, string tag)
+        {
+            int tagEnd = tagStart+1;
+
+            int additionalTagStack = 0;
+
+            do
+            {
+                int nextTagEnd = source.IndexOf("</" + tag + ">", tagEnd);
+                int nextTagStart = source.IndexOf("<" + tag + ">", tagEnd);
+                int nextTagStart2 = source.IndexOf("<" + tag + " ", tagEnd);
+                if ((nextTagStart < 0 || nextTagStart > nextTagEnd) && (nextTagStart2 < 0 || nextTagStart2 > nextTagEnd))
+                {
+                    if (additionalTagStack == 0)
+                        return nextTagEnd;
+                    additionalTagStack--;
+                    tagEnd = nextTagEnd + 1;
+                }
+                else
+                {
+
+                    if (nextTagStart < 0)
+                        tagEnd = nextTagStart2+1;
+                    else if (nextTagStart2 < 0)
+                        tagEnd = nextTagStart+1;
+                    else
+                        tagEnd = Math.Min(nextTagStart, nextTagStart2)+1;
+                    additionalTagStack++;
+                }
+
+            } while (tagEnd < source.Length - 4);
+
+            return source.Length-1;
+        }
 
         public static async Task<List<string>> FetchPagesInCategory(string category)
         {
