@@ -6,7 +6,7 @@ namespace DailyWikiReact.Server
 {
     public class WikipediaAPI
     {
-        private static readonly List<string> ignoredTags = new List<string>() { "span", "div", "sup" ,"!--" };
+        private static readonly List<string> ignoredTags = new List<string>() { "span", "div", "sup","!--" };
 
         public static string ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
         {
@@ -26,6 +26,10 @@ namespace DailyWikiReact.Server
                     break;
                 if (tag.EndsWith("/") || tag.StartsWith("/") || ignoredTags.Contains(tagName) || !source.Substring(index).Contains("</" + tagName + ">"))
                 {
+                    //special case of empty line tag <br/>
+                    if (tagName.Equals("br"))
+                        parsed += "<br />";
+
                     int tagEnd = source.IndexOf(">", index) + 1;
                     int nextTagStart = source.IndexOf("<", tagEnd);
                     if (nextTagStart > tagEnd && includeRawText)
@@ -38,6 +42,13 @@ namespace DailyWikiReact.Server
                 {
                     int tagEnd = ClosingTagIndex(source, index, tagName) + tagName.Length + 3;
                     int nextTagStart = source.IndexOf("<", tagEnd);
+
+                    //special case: ignoring the infobox table
+                    if (tagName.Equals("table") && tag.Contains("infobox"))
+                    {
+                        index = nextTagStart;
+                        continue;
+                    }
 
                     string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 5 - tag.Length - tagName.Length);
 
