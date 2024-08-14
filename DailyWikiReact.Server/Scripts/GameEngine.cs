@@ -69,6 +69,7 @@ namespace DailyWikiReact.Server
             {
                 hints.Add(CensorHint(title, splitDesc[i] + "</p>"));
             }
+
             return hints;
         }
 

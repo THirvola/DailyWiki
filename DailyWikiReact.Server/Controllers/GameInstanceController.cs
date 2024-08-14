@@ -22,15 +22,12 @@ namespace DailyWikiReact.Server.Controllers
             List<string> options = GameEngine.GetCategoryTitles(category).Result;
             string title = options[new Random(GameEngine.GetRandomSeed()).Next(0, options.Count)];
             List<string> hints = GameEngine.GetHints(title).Result;
-            string hint1 = hints[0];
-            hints.RemoveAt(0);
             return new GameInstance[1]
             { new GameInstance{
                 Date = DateOnly.FromDateTime(DateTime.UtcNow),
                 Category = category,
                 Title = title,
-                Hint1 = hint1,
-                Hint2 = hints,
+                Hints = hints,
                 Options = options,
                 Tries = 0,
                 gameEnd = false

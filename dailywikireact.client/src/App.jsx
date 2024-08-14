@@ -27,8 +27,7 @@ function App() {
                 <p>Date: {gameInstance[0].date}</p>
                 <p>Category: {gameInstance[0].category}</p>
                 <p>Tries: {gameInstance[0].tries}</p>
-                <p dangerouslySetInnerHTML={{ __html: 'Hint 1: ' + gameInstance[0].hint1 }} />
-                <p dangerouslySetInnerHTML={{ __html: 'Hint 2: ' + gameInstance[0].hint2 }} />
+                <p dangerouslySetInnerHTML={{ __html: 'Hint: ' + gameInstance[0].hint }} />
                 {gameInstance[0].options.map(option =>
                     <button key={option} onClick={async () => {
                         pickOption(option);
@@ -64,6 +63,7 @@ function App() {
 
         const response = await fetch('gameinstance?category=' + category);
         const data = await response.json();
+        data[0].hint = data[0].hints[0];
         await setGameInstance(data);
     }
     
@@ -71,29 +71,30 @@ function App() {
     {
         var newState = [...gameInstance];
         newState[0].tries = newState[0].tries + 1;
-        console.log(newState[0].tries);
-        //todo: post message to server
+        if (newState[0].tries < newState[0].hints.length)
+        {
+            newState[0].hint += newState[0].hints[newState[0].tries];
+        }
         if (newState[0].title == option)
         {
             newState[0].gameEnd = true;
-            //todo: send a POST request with fetch() to the server
 
             let formData = new FormData();
             Object.keys(newState[0]).forEach(function (key) {
                 formData.append(key, newState[0][key]);
             });
 
-            const response = await fetch("gameinstance/postgameresult", {
+            fetch("gameinstance/postgameresult", {
                 method: 'POST',
                 headers: {
                     'Token': "Game result"
                 },
                 body: formData
             });
-            const result = await response.json();
-            console.log(result[0]);
-
-            
+            /* If you await the fetch and store the response to variable named "response", use this to see the response
+            const result = response.json();
+            console.log(result);
+            */
         }
 
         await setGameInstance(newState);

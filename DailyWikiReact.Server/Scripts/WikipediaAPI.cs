@@ -6,51 +6,25 @@ namespace DailyWikiReact.Server
 {
     public class WikipediaAPI
     {
+        private static readonly List<string> ignoredTags = new List<string>() { "span", "div", "sup" ,"!--" };
+
         public static string ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
         {
             string parsed = "";
             //Extracting the paragraphs
             int index = source.IndexOf("<");
-            if (index > 0)
+            if (index > 0 && includeRawText)
                 parsed = source.Substring(0, index);
-            else if (index < 0)
+            else if (index < 0 && includeRawText)
                 parsed = source;
             while (index >= 0 && index < source.Length && source.Substring(index).Contains("<"))
             {
+
                 string tag = source.Substring(index + 1, source.IndexOf(">", index) - index - 1);
                 string tagName = tag.Split(' ')[0];
                 if (stopAtHeader && tagName.Length == 2 && tagName.StartsWith("h"))
                     break;
-                if (tagName.Equals("p") || (includeRawText && (tagName.Equals("i") || tagName.Equals("b") || tagName.Equals("a"))))
-                {
-                    int tagEnd = ClosingTagIndex(source, index, tagName) + tagName.Length + 3;
-                    int nextTagStart = source.IndexOf("<", tagEnd);
-
-                    string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 6 - tag.Length);
-
-                    //paragraphs may contain tags such as <sup> references whose contents should be removed
-                    string trimmedContents = ParseWikipediaMarkup(paragraphContent, false, true);
-
-                    if (trimmedContents.Trim().Length > 0) {
-                        if (tagName.Equals("b") || tagName.Equals("i") || tagName.Equals("p"))
-                        {
-                            parsed += "<" + tagName + ">";
-                        }
-
-                        parsed += trimmedContents;
-                        if (tagName.Equals("b") || tagName.Equals("i") || tagName.Equals("p"))
-                        {
-                            parsed += "</" + tagName + ">";
-                        }
-                    }
-
-                    if (nextTagStart > tagEnd && includeRawText)
-                        parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
-                    else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
-                        parsed += source.Substring(tagEnd);
-                    index = nextTagStart;
-                }
-                else if (tag.EndsWith("/") || tag.StartsWith("/") || tagName.Equals("span") || tagName.Equals("div") || !source.Substring(index).Contains("</" + tagName + ">"))
+                if (tag.EndsWith("/") || tag.StartsWith("/") || ignoredTags.Contains(tagName) || !source.Substring(index).Contains("</" + tagName + ">"))
                 {
                     int tagEnd = source.IndexOf(">", index) + 1;
                     int nextTagStart = source.IndexOf("<", tagEnd);
@@ -63,18 +37,34 @@ namespace DailyWikiReact.Server
                 else
                 {
                     int tagEnd = ClosingTagIndex(source, index, tagName) + tagName.Length + 3;
-                    if (tagEnd < tagName.Length + 3) //tag end was not found
-                        break;
-
                     int nextTagStart = source.IndexOf("<", tagEnd);
 
-                    //including any raw text between the end of this tag and the start of the next one (or the end of the string)
+                    string paragraphContent = source.Substring(index + 2 + tag.Length, tagEnd - index - 5 - tag.Length - tagName.Length);
+
+
+                    //paragraphs may contain tags such as <sup> references whose contents should be removed
+                    string trimmedContents = ParseWikipediaMarkup(paragraphContent, false, true);
+
+
+                    if (trimmedContents.Trim().Length > 0)
+                    {
+                        if (!tagName.Equals("a"))
+                        {
+                            parsed += "<" + tagName + ">";
+                        }
+
+                        parsed += trimmedContents;
+
+                        if (!tagName.Equals("a"))
+                        {
+                            parsed += "</" + tagName + ">";
+                        }
+                    }
+
                     if (nextTagStart > tagEnd && includeRawText)
                         parsed += source.Substring(tagEnd, nextTagStart - tagEnd);
                     else if (nextTagStart < 0 && source.Length > tagEnd && includeRawText)
                         parsed += source.Substring(tagEnd);
-
-                    //jumping to the start of the next tag
                     index = nextTagStart;
                 }
             }
