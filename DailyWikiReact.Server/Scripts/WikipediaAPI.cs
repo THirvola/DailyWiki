@@ -6,7 +6,7 @@ namespace DailyWikiReact.Server
 {
     public class WikipediaAPI
     {
-        private static readonly List<string> ignoredTags = new List<string>() { "span", "div", "!--" };
+        private static readonly List<string> ignoredTags = new List<string>() { "span", "div" , "figure", "style", "!--" };
 
         public static string ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
         {
@@ -184,7 +184,6 @@ namespace DailyWikiReact.Server
             catch
             {
                 //todo: catch errors
-
             }
             return new JsonElement();
         }

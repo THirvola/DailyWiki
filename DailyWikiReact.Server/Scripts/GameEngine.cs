@@ -24,12 +24,43 @@ namespace DailyWikiReact.Server
 
             for (int i = 0; i < titleWords.Length; ++i)
             {
+                //Short "words" such as "a" or "an" don't need to be censored
+                if (titleWords[i].Length < 3)
+                    continue;
+
                 //For replacing every letter with a # character 1:1
                 //censoredHint = censoredHint.Replace(titleWords[i], new String('#', titleWords[i].Length), StringComparison.InvariantCultureIgnoreCase);
 
                 //Replacing any instance of title's words with five # characters
                 censoredHint = censoredHint.Replace(titleWords[i], "#####", StringComparison.InvariantCultureIgnoreCase);
             }
+
+            //Replacing any 3+ letter word that is also included in the title with five # characters
+            //To counter obvious hints when the title contains a compound word
+            string[] splitHint = censoredHint.Split(new string[3]{ ".", ",", " "}, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < splitHint.Length; ++i)
+            {
+                if (splitHint[i].Length > 2 && title.Contains(splitHint[i]) && censoredHint.Contains(splitHint[i]))
+                {
+                    //Replacing every occurence of this part of the title
+                    censoredHint = censoredHint.Replace(splitHint[i], "#####", StringComparison.InvariantCultureIgnoreCase);
+                    //For replacing only full words, use this:
+                    /*
+                    censoredHint = censoredHint.Replace(" " + splitHint[i] + " ", " ##### ", StringComparison.InvariantCultureIgnoreCase);
+                    censoredHint = censoredHint.Replace(" " + splitHint[i] + ".", " #####.", StringComparison.InvariantCultureIgnoreCase);
+                    censoredHint = censoredHint.Replace(" " + splitHint[i] + ",", " #####,", StringComparison.InvariantCultureIgnoreCase);
+
+                    //special case of the word being at the start or the end of the hint
+                    if (censoredHint.StartsWith(splitHint[i]))
+                        censoredHint = "#####" + censoredHint.Substring(splitHint[i].Length);
+
+                    if (censoredHint.EndsWith(splitHint[i]))
+                        censoredHint = censoredHint.Substring(0, censoredHint.Length - splitHint[i].Length) + "#####"; */
+
+                }
+
+            }
+
             return censoredHint;
         }
 
