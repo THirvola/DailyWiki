@@ -6,7 +6,7 @@ namespace DailyWikiReact.Server
 {
     public class WikipediaAPI
     {
-        private static readonly List<string> ignoredTags = new List<string>() { "span", "div", "sup","!--" };
+        private static readonly List<string> ignoredTags = new List<string>() { "span", "div", "!--" };
 
         public static string ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
         {
@@ -43,8 +43,8 @@ namespace DailyWikiReact.Server
                     int tagEnd = ClosingTagIndex(source, index, tagName) + tagName.Length + 3;
                     int nextTagStart = source.IndexOf("<", tagEnd);
 
-                    //special case: ignoring the infobox table
-                    if (tagName.Equals("table") && tag.Contains("infobox"))
+                    //special case: ignoring the infobox table and superscripts (references)
+                    if ((tagName.Equals("table") && tag.Contains("infobox")) || (tagName.Equals("sup")))
                     {
                         index = nextTagStart;
                         continue;
