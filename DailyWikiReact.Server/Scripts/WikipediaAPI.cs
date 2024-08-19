@@ -6,7 +6,7 @@ namespace DailyWikiReact.Server
 {
     public class WikipediaAPI
     {
-        private static readonly List<string> ignoredTags = new List<string>() { "span", "div" , "figure", "style", "!--" };
+        private static readonly List<string> ignoredTags = new List<string>() { "span", "div" , "figure", "!--" };
 
         public static string ParseWikipediaMarkup(string source, bool stopAtHeader, bool includeRawText)
         {
@@ -44,7 +44,7 @@ namespace DailyWikiReact.Server
                     int nextTagStart = source.IndexOf("<", tagEnd);
 
                     //special case: ignoring the infobox table and superscripts (references)
-                    if ((tagName.Equals("table") && tag.Contains("infobox")) || (tagName.Equals("sup")))
+                    if ((tagName.Equals("table") && tag.Contains("infobox")) || tagName.Equals("sup") || tagName.Equals("style") || tagName.Equals("figcaption"))
                     {
                         index = nextTagStart;
                         continue;
@@ -54,7 +54,8 @@ namespace DailyWikiReact.Server
 
 
                     //paragraphs may contain tags such as <sup> references whose contents should be removed
-                    string trimmedContents = ParseWikipediaMarkup(paragraphContent, false, true);
+                    includeRawText = tagName.Equals("p") || includeRawText;
+                    string trimmedContents = ParseWikipediaMarkup(paragraphContent, false, includeRawText);
 
 
                     if (trimmedContents.Trim().Length > 0)
